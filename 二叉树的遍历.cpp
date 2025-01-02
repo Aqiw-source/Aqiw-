@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// ¶¨Òå¶ş²æÊ÷½Úµã½á¹¹Ìå
+// å®šä¹‰äºŒå‰æ ‘èŠ‚ç‚¹ç»“æ„ä½“
 typedef struct btnode
 {
     int val;
@@ -9,13 +9,13 @@ typedef struct btnode
     struct btnode* rchild;
 } btnode;
 
-// ´´½¨ĞÂ½ÚµãµÄº¯Êı
+// åˆ›å»ºæ–°èŠ‚ç‚¹çš„å‡½æ•°
 btnode* create(int val)
 {
     btnode* newnode = (btnode*)malloc(sizeof(btnode));
     if (newnode == NULL)
     {
-        printf("ÄÚ´æ·ÖÅäÊ§°Ü!\n");
+        printf("å†…å­˜åˆ†é…å¤±è´¥!\n");
         return NULL;
     }
     newnode->val = val;
@@ -24,12 +24,12 @@ btnode* create(int val)
     return newnode;
 }
 
-// Ç°Ğò½¨Á¢¶ş²æÊ÷µÄº¯Êı£¨ĞŞÕıºóµÄÕıÈ·°æ±¾£©
+// å‰åºå»ºç«‹äºŒå‰æ ‘çš„å‡½æ•°ï¼ˆä¿®æ­£åçš„æ­£ç¡®ç‰ˆæœ¬ï¼‰
 btnode* build()
 {
     int val;
     scanf("%d", &val);
-    if (val == -1)  // ÓÃ-1±íÊ¾¿Õ½Úµã
+    if (val == -1)  // ç”¨-1è¡¨ç¤ºç©ºèŠ‚ç‚¹
     {
         return NULL;
     }
@@ -39,23 +39,22 @@ btnode* build()
     return bt;
 }
 
-// ÏÈĞò±éÀúº¯Êı
+// å…ˆåºéå†å‡½æ•°
 void preorder(btnode* bt)
 {
-    if (bt == NULL)
-    {
-        return;
-    }
+   if(bt!=NULL)
+   { 
     printf("%-4d", bt->val);
     preorder(bt->lchild);
     preorder(bt->rchild);
+   }
 }
 
 int main()
 {
-    printf("Çë°´ÕÕÇ°Ğò±éÀúµÄË³ĞòÊäÈë¶ş²æÊ÷½ÚµãµÄÖµ£¨ÓÃ-1±íÊ¾¿Õ½Úµã£©£º\n");
+    printf("è¯·æŒ‰ç…§å‰åºéå†çš„é¡ºåºè¾“å…¥äºŒå‰æ ‘èŠ‚ç‚¹çš„å€¼ï¼ˆç”¨-1è¡¨ç¤ºç©ºèŠ‚ç‚¹ï¼‰ï¼š\n");
     btnode* root = build();
-    printf("ÏÈĞò±éÀú½á¹ûÎª£º\n");
+    printf("å…ˆåºéå†ç»“æœä¸ºï¼š\n");
     preorder(root);
     return 0;
 }
